@@ -1,0 +1,8 @@
+{
+  "domain": "rhvoice",
+  "name": "RHVoice",
+  "documentation": "https://github.com/definitio/ha-rhvoice",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": []
+}
