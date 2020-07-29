@@ -1,0 +1,7 @@
+{
+    "name": "RHVoice",
+    "render_readme": true,
+    "domains": [
+        "tts"
+    ]
+}
