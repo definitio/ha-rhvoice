@@ -1,8 +1,7 @@
 {
   "domain": "rhvoice",
   "name": "RHVoice",
-  "documentation": "https://github.com/definitio/ha-rhvoice",
-  "requirements": [],
-  "dependencies": [],
-  "codeowners": []
+  "documentation": "https://github.com/definitio/ha-rhvoice/blob/master/README.md",
+  "issue_tracker": "https://github.com/definitio/ha-rhvoice/issues",
+  "codeowners": ["@definitio"]
 }
