@@ -1,5 +1,7 @@
 # RHVoice component for Home Assistant
 
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
+
 The `rhvoice` integration uses [RHVoice](https://github.com/Olga-Yakovleva/RHVoice) Text-to-Speech engine to read a text with natural sounding voices.
 
 ## Usage
