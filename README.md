@@ -12,6 +12,7 @@ The `rhvoice` integration uses [RHVoice](https://github.com/Olga-Yakovleva/RHVoi
 4. Restart Home Assistant.
 
 ## <a name="configuration"></a> Configuration
+
 To enable text-to-speech with RHVoice, add at a minimum the following lines to your Home Assistant's `configuration.yaml` file:
 
 ```yaml
@@ -35,7 +36,6 @@ tts:
     volume: 50
 ```
 
-
 ## <a name="configuration-options"></a> Configuration Options
 
 - **host:** *(string) (Required)*
@@ -45,14 +45,15 @@ tts:
 - **port:** *(string) (Optional)*
 
   This is the port that the rhvoice-rest container can be reached at.
-  
+
     *Default value: `8080`*
+
 - **format:** *(string) (Optional)*
 
   This is the file format used for the TTS files created.
 
     *Default value: `mp3`*
-    
+
     *Allowed values: `wav|mp3|opus|flac`*
 
 - **pitch:** *(string) (Optional)*
@@ -60,7 +61,7 @@ tts:
     This adjust the sound frequency of the TTS voice, lower or higher.
 
     *Default value: `50`*
-    
+
     *Allowed values: `0 to 100`*
 
 - **rate:** *(string) (Optional)*
@@ -68,7 +69,7 @@ tts:
     This adjust the talking speed of the TTS voice, slower or faster.
 
     *Default value: `50`*
-    
+
     *Allowed values: `0 to 100`*
 
 - **voice:** *(string) (Optional)*
@@ -76,13 +77,24 @@ tts:
     This is the voice that is used to create the TTS files. Voices are connected with a language. For best results select a voice for the text language you will use.
 
     *Default value: `anna` (russian)*
-    
-    *Allowed values: See [the list of voices and their corresponding languages on the upstream RHVoice wiki page](https://github.com/Olga-Yakovleva/RHVoice/wiki/Latest-version).*
+
+    *Allowed values:*
+
+    | Voices                                           | Language             |
+    |--------------------------------------------------|----------------------|
+    | `alan`, `bdl`, `clb`, `slt`                      | American English     |
+    | `spomenka`                                       | Esperanto            |
+    | `natia`                                          | Georgian             |
+    | `azamat`, `nazgul`                               | Kyrgyz               |
+    | `letícia-f123`                                   | Brazilian Portuguese |
+    | `aleksandr`, `artemiy`, `anna`, `elena`, `irina` | Russian              |
+    | `talgat`                                         | Tatar                |
+    | `anatol`, `natalia`                              | Ukrainian            |
 
 - **volume:** *(string) (Optional)*
 
     This adjusts the volume of the voice in TTS files created, softer or louder.
 
     *Default value: `50`*
-    
+
     *Allowed values: `0 to 100`*
