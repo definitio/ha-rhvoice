@@ -55,7 +55,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
             vol.Coerce(int), vol.Range(0, 100)
         ),
         vol.Optional(CONF_VOICE, default=DEFAULT_VOICE): vol.All(
-            cv.string, vol.In(chain(*SUPPORTED_LANGUAGES.values()))
+            cv.string, vol.In(list(chain(*SUPPORTED_LANGUAGES.values())))
         ),
         vol.Optional(CONF_VOLUME, default=DEFAULT_VOLUME): vol.All(
             vol.Coerce(int), vol.Range(0, 100)
