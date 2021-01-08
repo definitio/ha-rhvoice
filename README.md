@@ -48,6 +48,18 @@ tts:
 
     *Default value: `8080`*
 
+- **ssl:** *(boolean) (Optional)*
+
+  Use HTTPS instead of HTTP to connect.
+
+    *Default value: `false`*
+
+- **verify_ssl:** *(boolean) (Optional)*
+
+  Enable or disable SSL certificate verification. Set to false if you have a self-signed SSL certificate and haven't installed the CA certificate to enable verification.
+
+    *Default value: `true`*
+
 - **format:** *(string) (Optional)*
 
   This is the file format used for the TTS files created.

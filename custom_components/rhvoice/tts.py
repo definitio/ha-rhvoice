@@ -7,7 +7,14 @@ import async_timeout
 import voluptuous as vol
 from aiohttp import ClientError
 from homeassistant.components.tts import PLATFORM_SCHEMA, Provider
-from homeassistant.const import CONF_HOST, CONF_PORT, CONF_TIMEOUT, HTTP_OK
+from homeassistant.const import (
+    CONF_HOST,
+    CONF_PORT,
+    CONF_SSL,
+    CONF_TIMEOUT,
+    CONF_VERIFY_SSL,
+    HTTP_OK,
+)
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
@@ -54,6 +61,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Optional(CONF_RATE, default=DEFAULT_RATE): vol.All(
             vol.Coerce(int), vol.Range(0, 100)
         ),
+        vol.Optional(CONF_SSL, default=False): cv.boolean,
+        vol.Optional(CONF_VERIFY_SSL, default=True): cv.boolean,
         vol.Optional(CONF_VOICE, default=DEFAULT_VOICE): vol.All(
             cv.string, vol.In(list(chain(*SUPPORTED_LANGUAGES.values())))
         ),
@@ -76,7 +85,10 @@ class RHVoiceProvider(Provider):
         """Init RHVoice TTS service."""
         self.name = 'RHVoice'
         self.hass = hass
-        self._url = f'http://{conf.get(CONF_HOST)}:{conf.get(CONF_PORT)}/say'
+        host, port, ssl = conf.get(CONF_HOST), conf.get(CONF_PORT), conf.get(CONF_SSL)
+        self._url = f"http{'s' if ssl else ''}://{host}:{port}/say"
+        self._verify_ssl = conf.get(CONF_VERIFY_SSL)
+
         self._codec = conf.get(CONF_FORMAT)
         self._pitch = conf.get(CONF_PITCH)
         self._rate = conf.get(CONF_RATE)
@@ -120,7 +132,9 @@ class RHVoiceProvider(Provider):
                     'volume': self._volume,
                 }
 
-                request = await websession.get(self._url, params=url_param)
+                request = await websession.get(
+                    self._url, params=url_param, verify_ssl=self._verify_ssl
+                )
 
                 if request.status != HTTP_OK:
                     _LOGGER.error(
