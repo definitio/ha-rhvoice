@@ -7,7 +7,7 @@ import async_timeout
 import voluptuous as vol
 from aiohttp import ClientError
 from homeassistant.components.tts import PLATFORM_SCHEMA, Provider
-from homeassistant.const import CONF_HOST, CONF_PORT, CONF_TIMEOUT
+from homeassistant.const import CONF_HOST, CONF_PORT, CONF_TIMEOUT, HTTP_OK
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
@@ -122,7 +122,7 @@ class RHVoiceProvider(Provider):
 
                 request = await websession.get(self._url, params=url_param)
 
-                if request.status != 200:
+                if request.status != HTTP_OK:
                     _LOGGER.error(
                         "Error %d on load URL %s", request.status, request.url
                     )
