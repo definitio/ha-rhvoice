@@ -3,5 +3,6 @@
   "name": "RHVoice",
   "documentation": "https://github.com/definitio/ha-rhvoice/blob/master/README.md",
   "issue_tracker": "https://github.com/definitio/ha-rhvoice/issues",
-  "codeowners": ["@definitio"]
+  "codeowners": ["@definitio"],
+  "version": "1.2.1"
 }
