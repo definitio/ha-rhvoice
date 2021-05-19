@@ -6,7 +6,14 @@ The `rhvoice` integration uses [RHVoice](https://github.com/Olga-Yakovleva/RHVoi
 
 ## Installation
 
-1. Run [rhvoice-rest](https://hub.docker.com/r/aculeasis/rhvoice-rest/) Docker container.
+1. Run [rhvoice-rest](https://hub.docker.com/r/aculeasis/rhvoice-rest/) Docker container (choose your CPU architecture):
+
+    aarch64: `docker run -d -p 8080:8080 aculeasis/rhvoice-rest:arm64v8`
+
+    armv7l: `docker run -d -p 8080:8080 aculeasis/rhvoice-rest:arm32v7`
+
+    x86_64: `docker run -d -p 8080:8080 aculeasis/rhvoice-rest:amd64`
+
 2. Install the integration to Home Assistant: use [HACS](https://hacs.xyz/) or copy the contents of `custom_components/rhvoice/` to `<your config dir>/custom_components/rhvoice/`.
 3. Configure in the Home Assistant `configuration.yaml` (See the [Configuration](#configuration) and [Configuration Options](#configuration-options) sections below)
 4. Restart Home Assistant.
