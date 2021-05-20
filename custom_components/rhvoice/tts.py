@@ -20,31 +20,31 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 _LOGGER = logging.getLogger(__name__)
 
-CONF_FORMAT = 'format'
-CONF_PITCH = 'pitch'
-CONF_RATE = 'rate'
-CONF_VOICE = 'voice'
-CONF_VOLUME = 'volume'
+CONF_FORMAT = "format"
+CONF_PITCH = "pitch"
+CONF_RATE = "rate"
+CONF_VOICE = "voice"
+CONF_VOLUME = "volume"
 
-SUPPORTED_FORMATS = ['flac', 'mp3', 'opus', 'wav']
+SUPPORTED_FORMATS = ["flac", "mp3", "opus", "wav"]
 SUPPORTED_OPTIONS = [CONF_VOICE, CONF_FORMAT, CONF_RATE, CONF_PITCH, CONF_VOLUME]
 SUPPORTED_LANGUAGES = {
-    'en-US': ('alan', 'bdl', 'clb', 'slt'),
-    'eo': ('spomenka',),
-    'ka-GE': ('natia',),
-    'ky-KG': ('azamat', 'nazgul'),
-    'pt-BR': ('letícia-f123',),
-    'ru-RU': ('aleksandr', 'anna', 'artemiy', 'elena', 'irina'),
-    'tt-RU': ('talgat',),
-    'uk-UA': ('anatol', 'natalia'),
+    "en-US": ("alan", "bdl", "clb", "slt"),
+    "eo": ("spomenka",),
+    "ka-GE": ("natia",),
+    "ky-KG": ("azamat", "nazgul"),
+    "pt-BR": ("letícia-f123",),
+    "ru-RU": ("aleksandr", "anna", "artemiy", "elena", "irina"),
+    "tt-RU": ("talgat",),
+    "uk-UA": ("anatol", "natalia"),
 }
 
 DEFAULT_PORT = 8080
 
-DEFAULT_FORMAT = 'mp3'  # wav|mp3|opus|flac
+DEFAULT_FORMAT = "mp3"  # wav|mp3|opus|flac
 DEFAULT_PITCH = 50  # 0..100
 DEFAULT_RATE = 50  # 0..100
-DEFAULT_VOICE = 'anna'
+DEFAULT_VOICE = "anna"
 DEFAULT_VOLUME = 50  # 0..100
 
 
@@ -83,7 +83,7 @@ class RHVoiceProvider(Provider):
 
     def __init__(self, hass, conf):
         """Init RHVoice TTS service."""
-        self.name = 'RHVoice'
+        self.name = "RHVoice"
         self.hass = hass
         host, port, ssl = conf.get(CONF_HOST), conf.get(CONF_PORT), conf.get(CONF_SSL)
         self._url = f"http{'s' if ssl else ''}://{host}:{port}/say"
@@ -124,12 +124,12 @@ class RHVoiceProvider(Provider):
         try:
             with async_timeout.timeout(self._timeout):
                 url_param = {
-                    'text': message,
-                    'voice': self._voice,
-                    'format': self._codec,
-                    'rate': self._rate,
-                    'pitch': self._pitch,
-                    'volume': self._volume,
+                    "text": message,
+                    "voice": self._voice,
+                    "format": self._codec,
+                    "rate": self._rate,
+                    "pitch": self._pitch,
+                    "volume": self._volume,
                 }
 
                 request = await websession.get(
