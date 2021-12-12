@@ -1,6 +1,7 @@
 """Support for the RHVoice tts service."""
 import logging
 from asyncio import TimeoutError as aioTimeoutError
+from http import HTTPStatus
 from itertools import chain
 
 import async_timeout
@@ -13,7 +14,6 @@ from homeassistant.const import (
     CONF_SSL,
     CONF_TIMEOUT,
     CONF_VERIFY_SSL,
-    HTTP_OK,
 )
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
@@ -136,7 +136,7 @@ class RHVoiceProvider(Provider):
                     self._url, params=url_param, verify_ssl=self._verify_ssl
                 )
 
-                if request.status != HTTP_OK:
+                if request.status != HTTPStatus.OK:
                     _LOGGER.error(
                         "Error %d on load URL %s", request.status, request.url
                     )
