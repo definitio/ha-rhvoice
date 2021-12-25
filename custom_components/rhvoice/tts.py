@@ -29,14 +29,26 @@ CONF_VOLUME = "volume"
 SUPPORTED_FORMATS = ["flac", "mp3", "opus", "wav"]
 SUPPORTED_OPTIONS = [CONF_VOICE, CONF_FORMAT, CONF_RATE, CONF_PITCH, CONF_VOLUME]
 SUPPORTED_LANGUAGES = {
-    "en-US": ("alan", "bdl", "clb", "slt"),
+    "en-US": ("alan", "bdl", "clb", "evgeniy-eng", "slt"),
     "eo": ("spomenka",),
     "ka-GE": ("natia",),
     "ky-KG": ("azamat", "nazgul"),
+    "mk": ("kiko",),
     "pt-BR": ("letícia-f123",),
-    "ru-RU": ("aleksandr", "anna", "artemiy", "elena", "irina"),
+    "ru-RU": (
+        "aleksandr",
+        "anna",
+        "arina",
+        "artemiy",
+        "elena",
+        "evgeniy-rus",
+        "irina",
+        "pavel",
+        "yuriy",
+        "victoria",
+    ),
     "tt-RU": ("talgat",),
-    "uk-UA": ("anatol", "natalia"),
+    "uk-UA": ("anatol", "natalia", "volodymyr"),
 }
 
 DEFAULT_PORT = 8080

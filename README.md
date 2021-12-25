@@ -99,16 +99,17 @@ tts:
 
     *Allowed values:*
 
-    | Voices                                           | Language             |
-    |--------------------------------------------------|----------------------|
-    | `alan`, `bdl`, `clb`, `slt`                      | American English     |
-    | `spomenka`                                       | Esperanto            |
-    | `natia`                                          | Georgian             |
-    | `azamat`, `nazgul`                               | Kyrgyz               |
-    | `letícia-f123`                                   | Brazilian Portuguese |
-    | `aleksandr`, `artemiy`, `anna`, `elena`, `irina` | Russian              |
-    | `talgat`                                         | Tatar                |
-    | `anatol`, `natalia`                              | Ukrainian            |
+    | Language             | Voices                                                                                                     |
+    | -------------------- | ---------------------------------------------------------------------------------------------------------- |
+    | American English     | `alan`, `bdl`, `clb`, `evgeniy-eng`, `slt`                                                                 |
+    | Esperanto            | `spomenka`                                                                                                 |
+    | Georgian             | `natia`                                                                                                    |
+    | Kyrgyz               | `azamat`, `nazgul`                                                                                         |
+    | Macedonian           | `kiko`                                                                                                     |
+    | Brazilian Portuguese | `letícia-f123`                                                                                             |
+    | Russian              | `aleksandr`, `anna`, `arina`, `artemiy`, `elena`, <br>`evgeniy-rus`, `irina`, `pavel`, `yuriy`, `victoria` |
+    | Tatar                | `talgat`                                                                                                   |
+    | Ukrainian            | `anatol`, `natalia` , `volodymyr`                                                                          |
 
 - **volume:** *(string) (Optional)*
 
