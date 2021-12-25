@@ -27,7 +27,7 @@ CONF_VOICE = "voice"
 CONF_VOLUME = "volume"
 
 SUPPORTED_FORMATS = ["flac", "mp3", "opus", "wav"]
-SUPPORTED_OPTIONS = [CONF_VOICE, CONF_FORMAT, CONF_RATE, CONF_PITCH, CONF_VOLUME]
+SUPPORTED_OPTIONS = [CONF_FORMAT, CONF_PITCH, CONF_RATE, CONF_VOICE, CONF_VOLUME]
 SUPPORTED_LANGUAGES = {
     "en-US": ("alan", "bdl", "clb", "evgeniy-eng", "slt"),
     "eo": ("spomenka",),
@@ -53,34 +53,29 @@ SUPPORTED_LANGUAGES = {
 
 DEFAULT_PORT = 8080
 
-DEFAULT_FORMAT = "mp3"  # wav|mp3|opus|flac
-DEFAULT_PITCH = 50  # 0..100
-DEFAULT_RATE = 50  # 0..100
+DEFAULT_FORMAT = "mp3"
+DEFAULT_PITCH = 50
+DEFAULT_RATE = 50
 DEFAULT_VOICE = "anna"
-DEFAULT_VOLUME = 50  # 0..100
+DEFAULT_VOLUME = 50
 
+FORMAT_SCHEMA = vol.All(cv.string, vol.In(SUPPORTED_FORMATS))
+PITCH_SCHEMA = vol.All(vol.Coerce(int), vol.Range(0, 100))
+RATE_SCHEMA = vol.All(vol.Coerce(int), vol.Range(0, 100))
+VOICE_SCHEMA = vol.All(cv.string, vol.In(list(chain(*SUPPORTED_LANGUAGES.values()))))
+VOLUME_SCHEMA = vol.All(vol.Coerce(int), vol.Range(0, 100))
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
         vol.Required(CONF_HOST): cv.string,
         vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.port,
-        vol.Optional(CONF_FORMAT, default=DEFAULT_FORMAT): vol.All(
-            cv.string, vol.In(SUPPORTED_FORMATS)
-        ),
-        vol.Optional(CONF_PITCH, default=DEFAULT_PITCH): vol.All(
-            vol.Coerce(int), vol.Range(0, 100)
-        ),
-        vol.Optional(CONF_RATE, default=DEFAULT_RATE): vol.All(
-            vol.Coerce(int), vol.Range(0, 100)
-        ),
+        vol.Optional(CONF_FORMAT, default=DEFAULT_FORMAT): FORMAT_SCHEMA,
+        vol.Optional(CONF_PITCH, default=DEFAULT_PITCH): PITCH_SCHEMA,
+        vol.Optional(CONF_RATE, default=DEFAULT_RATE): RATE_SCHEMA,
         vol.Optional(CONF_SSL, default=False): cv.boolean,
         vol.Optional(CONF_VERIFY_SSL, default=True): cv.boolean,
-        vol.Optional(CONF_VOICE, default=DEFAULT_VOICE): vol.All(
-            cv.string, vol.In(list(chain(*SUPPORTED_LANGUAGES.values())))
-        ),
-        vol.Optional(CONF_VOLUME, default=DEFAULT_VOLUME): vol.All(
-            vol.Coerce(int), vol.Range(0, 100)
-        ),
+        vol.Optional(CONF_VOICE, default=DEFAULT_VOICE): VOICE_SCHEMA,
+        vol.Optional(CONF_VOLUME, default=DEFAULT_VOLUME): VOLUME_SCHEMA,
     }
 )
 
@@ -101,7 +96,7 @@ class RHVoiceProvider(Provider):
         self._url = f"http{'s' if ssl else ''}://{host}:{port}/say"
         self._verify_ssl = conf.get(CONF_VERIFY_SSL)
 
-        self._codec = conf.get(CONF_FORMAT)
+        self._encoding = conf.get(CONF_FORMAT)
         self._pitch = conf.get(CONF_PITCH)
         self._rate = conf.get(CONF_RATE)
         self._voice = conf.get(CONF_VOICE)
@@ -131,21 +126,22 @@ class RHVoiceProvider(Provider):
     async def async_get_tts_audio(self, message, language, options=None):
         """Load TTS from RHVoice."""
         websession = async_get_clientsession(self.hass)
-        options = options or {}
+        options_schema = vol.Schema(
+            {
+                vol.Optional(CONF_FORMAT, default=self._encoding): FORMAT_SCHEMA,
+                vol.Optional(CONF_PITCH, default=self._pitch): PITCH_SCHEMA,
+                vol.Optional(CONF_RATE, default=self._rate): RATE_SCHEMA,
+                vol.Optional(CONF_VOICE, default=self._voice): VOICE_SCHEMA,
+                vol.Optional(CONF_VOLUME, default=self._volume): VOLUME_SCHEMA,
+            }
+        )
+        options = options_schema(options or {})
+        options.update({"text": message})
 
         try:
             with async_timeout.timeout(self._timeout):
-                url_param = {
-                    "text": message,
-                    "voice": self._voice,
-                    "format": self._codec,
-                    "rate": self._rate,
-                    "pitch": self._pitch,
-                    "volume": self._volume,
-                }
-
                 request = await websession.get(
-                    self._url, params=url_param, verify_ssl=self._verify_ssl
+                    self._url, params=options, verify_ssl=self._verify_ssl
                 )
 
                 if request.status != HTTPStatus.OK:
@@ -159,4 +155,4 @@ class RHVoiceProvider(Provider):
             _LOGGER.error("Timeout for RHVoice API")
             return None, None
 
-        return self._codec, data
+        return self._encoding, data

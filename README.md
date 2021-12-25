@@ -118,3 +118,20 @@ tts:
     *Default value: `50`*
 
     *Allowed values: `0 to 100`*
+
+## Tips
+
+### You can override configuration with service options
+
+```yaml
+service: tts.rhvoice_say
+data:
+  entity_id: media_player.main
+  message: The cake is a lie
+  options:
+    format: mp3
+    pitch: 32
+    rate: 64
+    voice: slt
+    volume: 16
+```
