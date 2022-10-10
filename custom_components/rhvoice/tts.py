@@ -138,6 +138,10 @@ class RHVoiceProvider(Provider):
         options = options_schema(options or {})
         options.update({"text": message})
 
+        if not message:
+            _LOGGER.warning("The message text can't be empty")
+            message = " "
+
         try:
             with async_timeout.timeout(self._timeout):
                 request = await websession.get(
