@@ -14,6 +14,8 @@ The `rhvoice` integration uses [RHVoice](https://github.com/Olga-Yakovleva/RHVoi
 
     x86_64: `docker run -d -p 8080:8080 aculeasis/rhvoice-rest:amd64`
 
+    Or use [RHVoice add-on](https://github.com/definitio/ha-rhvoice-addon). Only `aarch64` and `x64` are supported.
+
 2. Install the integration to Home Assistant: use [HACS](https://hacs.xyz/) or copy the contents of `custom_components/rhvoice/` to `<your config dir>/custom_components/rhvoice/`.
 3. Configure in the Home Assistant `configuration.yaml` (See the [Configuration](#configuration) and [Configuration Options](#configuration-options) sections below)
 4. Restart Home Assistant.
@@ -48,6 +50,7 @@ tts:
 - **host:** *(string) (Required)*
 
   This is the hostname, domain name or IP address that the `rhvoice-rest` container can be reached at. If you use domain name that is reachable on the Internet for Home Assistant, enter that here.
+  Use `localhost` for [RHVoice add-on](https://github.com/definitio/ha-rhvoice-addon).
 
 - **port:** *(string) (Optional)*
 
@@ -135,3 +138,7 @@ data:
     voice: slt
     volume: 16
 ```
+
+## Other
+
+You can buy me a coffee via Bitcoin donation for help me to maintain that project: `bc1qd6khey9xkss6vgd6fqpqdyq4lehtepajkcf256`
