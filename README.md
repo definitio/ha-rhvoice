@@ -1,6 +1,8 @@
 # RHVoice component for Home Assistant
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
+[![Validate with hassfest](https://github.com/definitio/ha-rhvoice/actions/workflows/hassfest.yaml/badge.svg)](https://github.com/definitio/ha-rhvoice/actions/workflows/hassfest.yaml)
+[![Validate with HACS action](https://github.com/definitio/ha-rhvoice/actions/workflows/hacs.yaml/badge.svg)](https://github.com/definitio/ha-rhvoice/actions/workflows/hacs.yaml)
 
 The `rhvoice` integration uses [RHVoice](https://github.com/Olga-Yakovleva/RHVoice) Text-to-Speech (TTS) engine to read a text with natural sounding voices.
 
@@ -141,4 +143,4 @@ data:
 
 ## Other
 
-You can buy me a coffee via Bitcoin donation for help me to maintain that project: `bc1qd6khey9xkss6vgd6fqpqdyq4lehtepajkcf256`
+You can buy me a coffee via Bitcoin donation: `bc1qd6khey9xkss6vgd6fqpqdyq4lehtepajkcf256`
