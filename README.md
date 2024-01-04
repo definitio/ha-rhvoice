@@ -4,7 +4,7 @@
 [![Validate with hassfest](https://github.com/definitio/ha-rhvoice/actions/workflows/hassfest.yaml/badge.svg)](https://github.com/definitio/ha-rhvoice/actions/workflows/hassfest.yaml)
 [![Validate with HACS action](https://github.com/definitio/ha-rhvoice/actions/workflows/hacs.yaml/badge.svg)](https://github.com/definitio/ha-rhvoice/actions/workflows/hacs.yaml)
 
-The `rhvoice` integration uses [RHVoice](https://github.com/Olga-Yakovleva/RHVoice) Text-to-Speech (TTS) engine to read a text with natural sounding voices.
+The `rhvoice` integration uses [RHVoice](https://github.com/RHVoice/RHVoice) Text-to-Speech (TTS) engine to read a text with natural sounding voices.
 
 ## Installation
 
@@ -106,15 +106,20 @@ tts:
 
     | Language             | Voices                                                                                                     |
     | -------------------- | ---------------------------------------------------------------------------------------------------------- |
-    | American English     | `alan`, `bdl`, `clb`, `evgeniy-eng`, `slt`                                                                 |
+    | Albanian             | `hana`                                                                                                     |
+    | American English     | `alan`, `bdl`, `clb`, `evgeniy-eng`, `lyubov`, `slt`                                                       |
+    | Czech                | `zdenek`                                                                                                   |
     | Esperanto            | `spomenka`                                                                                                 |
     | Georgian             | `natia`                                                                                                    |
     | Kyrgyz               | `azamat`, `nazgul`                                                                                         |
-    | Macedonian           | `kiko`                                                                                                     |
+    | Macedonian           | `kiko`, `suze`                                                                                             |
+    | Polish               | `alicja`, `cezary`, `magda`, `michal`, `natan`                                                             |
     | Brazilian Portuguese | `letícia-f123`                                                                                             |
-    | Russian              | `aleksandr`, `anna`, `arina`, `artemiy`, `elena`, <br>`evgeniy-rus`, `irina`, `pavel`, `yuriy`, `victoria` |
+    | Russian              | `aleksandr`, `aleksandr-hq`, `anna`, `arina`, `artemiy`, `elena`, <br>`evgeniy-rus`, `irina`, `mikhail`, `pavel`, `tatiana`, `timofey`, <br>`umka`, `victoria`, `vitaliy`, `vitaliy-ng`, `vsevolod`, `yuriy` |
+    | Slovak               | `ondro`                                                                                                    |
     | Tatar                | `talgat`                                                                                                   |
-    | Ukrainian            | `anatol`, `natalia` , `volodymyr`                                                                          |
+    | Ukrainian            | `anatol`, `marianna`, `natalia`, `volodymyr`                                                               |
+    | Uzbek                | `sevinch`                                                                                                  |
 
 - **volume:** *(string) (Optional)*
 
