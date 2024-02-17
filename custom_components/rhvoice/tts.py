@@ -1,4 +1,5 @@
 """Support for the RHVoice tts service."""
+
 import logging
 from asyncio import TimeoutError as aioTimeoutError
 from http import HTTPStatus
@@ -18,38 +19,18 @@ from homeassistant.const import (
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
+from .const import (
+    CONF_FORMAT,
+    CONF_PITCH,
+    CONF_RATE,
+    CONF_VOICE,
+    CONF_VOLUME,
+    SUPPORTED_FORMATS,
+    SUPPORTED_OPTIONS,
+    SUPPORTED_LANGUAGES,
+)
+
 _LOGGER = logging.getLogger(__name__)
-
-CONF_FORMAT = "format"
-CONF_PITCH = "pitch"
-CONF_RATE = "rate"
-CONF_VOICE = "voice"
-CONF_VOLUME = "volume"
-
-SUPPORTED_FORMATS = ["flac", "mp3", "opus", "wav"]
-SUPPORTED_OPTIONS = [CONF_FORMAT, CONF_PITCH, CONF_RATE, CONF_VOICE, CONF_VOLUME]
-SUPPORTED_LANGUAGES = {
-    "en-US": ("alan", "bdl", "clb", "evgeniy-eng", "slt"),
-    "eo": ("spomenka",),
-    "ka-GE": ("natia",),
-    "ky-KG": ("azamat", "nazgul"),
-    "mk": ("kiko",),
-    "pt-BR": ("letícia-f123",),
-    "ru-RU": (
-        "aleksandr",
-        "anna",
-        "arina",
-        "artemiy",
-        "elena",
-        "evgeniy-rus",
-        "irina",
-        "pavel",
-        "yuriy",
-        "victoria",
-    ),
-    "tt-RU": ("talgat",),
-    "uk-UA": ("anatol", "natalia", "volodymyr"),
-}
 
 DEFAULT_PORT = 8080
 
