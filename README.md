@@ -8,13 +8,13 @@ The `rhvoice` integration uses [RHVoice](https://github.com/RHVoice/RHVoice) Tex
 
 ## Installation
 
-1. Run [rhvoice-rest](https://hub.docker.com/r/aculeasis/rhvoice-rest/) Docker container (choose your CPU architecture):
+1. Run [rhvoice-rest](https://github.com/Aculeasis/rhvoice-rest) Docker container (choose your CPU architecture):
 
-    aarch64: `docker run -d -p 8080:8080 aculeasis/rhvoice-rest:arm64v8`
+    aarch64: `docker run -d -p 8080:8080 ghcr.io/aculeasis/rhvoice-rest:arm64v8`
 
-    armv7l: `docker run -d -p 8080:8080 aculeasis/rhvoice-rest:arm32v7`
+    armv7l: `docker run -d -p 8080:8080 ghcr.io/aculeasis/rhvoice-rest:arm32v7`
 
-    x86_64: `docker run -d -p 8080:8080 aculeasis/rhvoice-rest:amd64`
+    x86_64: `docker run -d -p 8080:8080 ghcr.io/aculeasis/rhvoice-rest:amd64`
 
     Or use [RHVoice add-on](https://github.com/definitio/ha-rhvoice-addon). Only `aarch64` and `x64` are supported.
 
