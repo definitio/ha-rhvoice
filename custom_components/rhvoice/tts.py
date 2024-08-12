@@ -8,7 +8,7 @@ from itertools import chain
 import async_timeout
 import voluptuous as vol
 from aiohttp import ClientError
-from homeassistant.components.tts import PLATFORM_SCHEMA, Provider
+from homeassistant.components.tts import PLATFORM_SCHEMA, Provider, Voice, callback
 from homeassistant.const import (
     CONF_HOST,
     CONF_PORT,
@@ -103,6 +103,11 @@ class RHVoiceProvider(Provider):
     def supported_options(self):
         """Return list of supported options."""
         return SUPPORTED_OPTIONS
+
+    @callback
+    def async_get_supported_voices(self, language: str) -> list[Voice] | None:
+        """Return a list of supported voices for a language."""
+        return [Voice(voice, voice) for voice in SUPPORTED_LANGUAGES[language]]
 
     async def async_get_tts_audio(self, message, language, options=None):
         """Load TTS from RHVoice."""
