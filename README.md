@@ -108,18 +108,27 @@ tts:
     | -------------------- | ---------------------------------------------------------------------------------------------------------- |
     | Albanian             | `hana`                                                                                                     |
     | American English     | `alan`, `bdl`, `clb`, `evgeniy-eng`, `lyubov`, `slt`                                                       |
-    | Czech                | `zdenek`                                                                                                   |
+    | Brazilian Portuguese | `letícia-f123`                                                                                             |
+    | Croatian             | `karmela`, `marija`                                                                                        |
+    | Czech                | `radek`, `zdenek`                                                                                          |
     | Esperanto            | `spomenka`                                                                                                 |
     | Georgian             | `natia`                                                                                                    |
     | Kyrgyz               | `azamat`, `nazgul`                                                                                         |
     | Macedonian           | `kiko`, `suze`                                                                                             |
+    | Nepali               | `dina`                                                                                                     |
     | Polish               | `alicja`, `cezary`, `magda`, `michal`, `natan`                                                             |
-    | Brazilian Portuguese | `letícia-f123`                                                                                             |
+    | Romanian             | `paul`                                                                                                     |
     | Russian              | `aleksandr`, `aleksandr-hq`, `anna`, `arina`, `artemiy`, `elena`, <br>`evgeniy-rus`, `irina`, `mikhail`, `pavel`, `tatiana`, `timofey`, <br>`umka`, `victoria`, `vitaliy`, `vitaliy-ng`, `vsevolod`, `yuriy` |
-    | Slovak               | `ondro`                                                                                                    |
+    | Serbian (Cyrillic)   | `dragana`                                                                                                  |
+    | Serbian (Latin)      | `dragana`                                                                                                  |
+    | Setswana             | `dimpho`                                                                                                   |
+    | Slovak               | `jasietka`, `ondro`, `radek`, `zdenek`                                                                     |
+    | Southern Vietnamese  | `vi vu`                                                                                                    |
+    | Spanish              | `latin american spanish`, `mateo`                                                                          |
     | Tatar                | `talgat`                                                                                                   |
+    | Turkmen              | `dunya`                                                                                                    |
     | Ukrainian            | `anatol`, `marianna`, `natalia`, `volodymyr`                                                               |
-    | Uzbek                | `sevinch`                                                                                                  |
+    | Uzbek                | `dil'navoz`, `islom`, `sevinch`                                                                            |
 
 - **volume:** *(string) (Optional)*
 
